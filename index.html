@@ -6,70 +6,152 @@
 <title>科创企业品牌建设 · 课程笔记</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#FAF7F2;--cream2:#F5F0E8;--cream3:#EDE7DB;--wg:#8C8278;--wg2:#A99E93;--tx:#2D2A26;--tx2:#5C5650;--tx3:#8C8278;--accent:#C4704B;--accent2:#D4896B;--accentL:rgba(196,112,75,.1);--sage:#7A9E7E;--sageL:rgba(122,158,126,.12);--navy:#3D4F6F;--navy2:#2C3A54;--bg:#FFF;--brd:rgba(0,0,0,.06);--sh:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03);--shL:0 4px 6px rgba(0,0,0,.03),0 12px 28px rgba(0,0,0,.06);--r:12px;--fd:'Inter','Noto Sans SC',-apple-system,sans-serif;--fs:'Noto Serif SC',Georgia,serif}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--tx);font-family:var(--fd);line-height:1.7;-webkit-font-smoothing:antialiased}
-.hero{background:linear-gradient(135deg,var(--cream2),var(--cream),#F0EBE1);padding:56px 32px 44px;text-align:center;position:relative}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--wg2),transparent);opacity:.3}
-.hero-inner{max-width:800px;margin:0 auto}
-.eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-.hero h1{font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;letter-spacing:-.02em}
-.hero h1 .cn{display:block;font-family:var(--fs);font-weight:700;font-size:.65em;margin-top:8px;color:var(--tx2);letter-spacing:.04em}
-.hero-sub{margin-top:16px;font-size:.9rem;color:var(--tx3);max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6}
-.hero-meta{margin-top:10px;font-size:.78rem;color:var(--wg2);font-weight:500}
-.hero-div{width:40px;height:2px;background:var(--accent);border-radius:1px;margin:20px auto 0;opacity:.6}
-.nav-bar{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--brd)}
+/* ===== VARIABLES: Claude Cream Palette ===== */
+:root{
+  --cream:#FAF7F2;--cream2:#F5F0E8;--cream3:#EDE7DB;
+  --wg:#8C8278;--wg2:#A99E93;
+  --tx:#2D2A26;--tx2:#5C5650;--tx3:#8C8278;
+  --accent:#C4704B;--accent2:#D4896B;--accentL:rgba(196,112,75,.08);--accentGlow:rgba(196,112,75,.18);
+  --sage:#7A9E7E;--sageL:rgba(122,158,126,.1);--sageGlow:rgba(122,158,126,.15);
+  --navy:#3D4F6F;--navyL:rgba(61,79,111,.08);
+  --bg:#FFF;--brd:rgba(0,0,0,.06);--brd2:rgba(0,0,0,.1);
+  --sh:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03);
+  --shL:0 4px 8px rgba(0,0,0,.05),0 12px 28px rgba(0,0,0,.07);
+  --r:12px;
+  --fd:'Plus Jakarta Sans','Noto Sans SC',-apple-system,sans-serif;
+  --fs:'Noto Serif SC',Georgia,serif
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--tx);font-family:var(--fd);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accentL);color:var(--accent)}
+
+/* ===== READING PROGRESS BAR ===== */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--sage));z-index:200;transition:width .1s linear;width:0}
+
+/* ===== HERO ===== */
+.hero{padding:68px 32px 56px;text-align:center;position:relative;overflow:hidden;
+background:linear-gradient(180deg,var(--cream) 0%,var(--cream2) 50%,var(--cream) 100%)}
+.hero::before{content:'';position:absolute;inset:0;
+background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(196,112,75,.05) 0%,transparent 70%),
+radial-gradient(ellipse 50% 40% at 25% 60%,rgba(122,158,126,.04) 0%,transparent 60%),
+radial-gradient(ellipse 50% 40% at 75% 50%,rgba(61,79,111,.03) 0%,transparent 60%);
+animation:heroPulse 10s ease-in-out infinite alternate;pointer-events:none}
+@keyframes heroPulse{0%{opacity:.6;transform:scale(1)}100%{opacity:1;transform:scale(1.03)}}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.06),transparent)}
+.hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;opacity:0;animation:fadeUp .7s .15s ease forwards}
+.hero h1{font-weight:800;font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.08;letter-spacing:-.03em;color:var(--tx);opacity:0;animation:fadeUp .7s .3s ease forwards}
+.hero h1 .cn{display:block;font-family:var(--fs);font-weight:700;font-size:.55em;margin-top:10px;color:var(--tx2);letter-spacing:.04em}
+.hero-sub{margin-top:18px;font-size:.9rem;color:var(--tx2);max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;opacity:0;animation:fadeUp .7s .45s ease forwards}
+.hero-meta{margin-top:10px;font-size:.78rem;color:var(--wg2);font-weight:500;opacity:0;animation:fadeUp .7s .55s ease forwards}
+.hero-div{width:40px;height:2px;background:linear-gradient(90deg,var(--accent),var(--sage));border-radius:1px;margin:22px auto 0;opacity:0;animation:fadeUp .7s .65s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== NAV ===== */
+.nav-bar{background:rgba(250,247,242,.82);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--brd);transition:box-shadow .3s ease}
+.nav-bar.scrolled{box-shadow:0 1px 8px rgba(0,0,0,.04)}
 .nav-inner{max-width:960px;margin:0 auto;display:flex;gap:0;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.nav-tab{background:0;border:0;color:var(--tx3);font-family:var(--fd);font-weight:600;font-size:.82rem;padding:16px 24px;cursor:pointer;transition:all .2s;position:relative;white-space:nowrap}
+.nav-tab{background:0;border:0;color:var(--tx3);font-family:var(--fd);font-weight:600;font-size:.82rem;padding:16px 24px;cursor:pointer;transition:color .25s ease;position:relative;white-space:nowrap}
 .nav-tab:hover{color:var(--tx)}.nav-tab.active{color:var(--accent)}
-.nav-tab.active::after{content:'';position:absolute;bottom:0;left:20px;right:20px;height:2px;background:var(--accent);border-radius:2px 2px 0 0}
+.nav-tab.active::after{content:'';position:absolute;bottom:0;left:20px;right:20px;height:2px;background:linear-gradient(90deg,var(--accent),var(--sage));border-radius:2px 2px 0 0;animation:tabLine .4s ease}
+@keyframes tabLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ===== MAIN CONTENT ===== */
 .cw{max-width:960px;margin:0 auto;padding:36px 24px 60px}
-.tp{display:none;animation:fi .35s ease}.tp.active{display:block}
-@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.c{background:var(--bg);border-radius:var(--r);padding:28px 32px;margin-bottom:24px;border:1px solid var(--brd);box-shadow:var(--sh)}
-.ca{border-left:3px solid var(--accent)}.cs{border-left:3px solid var(--sage)}
-.c h3{font-weight:700;font-size:1.25rem;line-height:1.3;margin-bottom:12px;letter-spacing:-.01em}
+.tp{display:none;opacity:0;transform:translateY(10px)}.tp.active{display:block;animation:tabFade .45s ease forwards}
+@keyframes tabFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== SCROLL REVEAL: Reading Focus ===== */
+.c,.sc,.mc,.cc,.qc,.mx,.nt{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease,box-shadow .35s ease,border-color .35s ease}
+.c.revealed,.sc.revealed,.mc.revealed,.cc.revealed,.qc.revealed,.mx.revealed,.nt.revealed{opacity:1;transform:translateY(0)}
+
+/* ===== CARDS ===== */
+.c{background:var(--bg);border-radius:var(--r);padding:28px 32px;margin-bottom:24px;border:1px solid var(--brd);box-shadow:var(--sh);transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+.c:hover{transform:translateY(-2px);box-shadow:var(--shL);border-color:var(--brd2)}
+.ca{border-left:3px solid var(--accent);transition:border-color .4s ease,box-shadow .4s ease,opacity .55s ease,transform .55s ease}
+.ca:hover{box-shadow:var(--shL),0 0 0 1px rgba(196,112,75,.08)}
+.ca.revealed{border-left-color:var(--accent);animation:accentPulse 1.2s ease forwards}
+.cs{border-left:3px solid var(--sage)}
+.cs:hover{box-shadow:var(--shL),0 0 0 1px rgba(122,158,126,.08)}
+.cs.revealed{border-left-color:var(--sage);animation:sagePulse 1.2s ease forwards}
+@keyframes accentPulse{0%{border-left-color:transparent}40%{border-left-color:var(--accent)}60%{border-left-color:var(--accent2)}100%{border-left-color:var(--accent)}}
+@keyframes sagePulse{0%{border-left-color:transparent}40%{border-left-color:var(--sage)}60%{border-left-color:#8ab48e}100%{border-left-color:var(--sage)}}
+.c h3{font-weight:700;font-size:1.25rem;line-height:1.3;margin-bottom:12px;letter-spacing:-.01em;color:var(--tx)}
 .c p{font-size:.88rem;font-weight:450;line-height:1.72;color:var(--tx2);margin-bottom:12px}.c p:last-child{margin-bottom:0}
+
+/* ===== GRIDS ===== */
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
 .g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
 .g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px}
-.sc{background:var(--bg);border-radius:var(--r);padding:20px;border:1px solid var(--brd);box-shadow:var(--sh)}
+
+/* ===== SUB CARDS ===== */
+.sc{background:var(--bg);border-radius:var(--r);padding:20px;border:1px solid var(--brd);box-shadow:var(--sh);transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+.sc:hover{transform:translateY(-2px);box-shadow:var(--shL);border-color:var(--brd2)}
 .sc .st{display:inline-block;font-weight:700;font-size:.68rem;letter-spacing:.1em;padding:3px 10px;border-radius:4px;margin-bottom:8px}
-.s1{background:var(--accentL);color:var(--accent)}.s2{background:var(--sageL);color:var(--sage)}.s3{background:rgba(61,79,111,.1);color:var(--navy)}.s4{background:rgba(196,112,75,.08);color:#9E6040}
-.sc strong{display:block;font-weight:700;font-size:.95rem;line-height:1.3;margin-bottom:4px}
+.s1{background:var(--accentL);color:var(--accent)}.s2{background:var(--sageL);color:var(--sage)}.s3{background:var(--navyL);color:var(--navy)}.s4{background:rgba(196,112,75,.06);color:#9E6040}
+.sc strong{display:block;font-weight:700;font-size:.95rem;line-height:1.3;margin-bottom:4px;color:var(--tx)}
 .sc .d{font-size:.8rem;color:var(--tx3);line-height:1.5}
-.mc{background:var(--bg);border-radius:var(--r);padding:20px;border:1px solid var(--brd);border-top:2px solid var(--sage);box-shadow:var(--sh)}
+
+/* ===== MODEL CARDS ===== */
+.mc{background:var(--bg);border-radius:var(--r);padding:20px;border:1px solid var(--brd);border-top:2px solid var(--sage);box-shadow:var(--sh);transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+.mc:hover{transform:translateY(-2px);box-shadow:var(--shL);border-color:var(--brd2)}
 .mc .b{display:inline-block;background:var(--sageL);color:var(--sage);font-weight:700;font-size:.65rem;letter-spacing:.1em;padding:2px 8px;border-radius:3px;margin-bottom:8px}
-.mc h4{font-weight:700;font-size:.95rem;line-height:1.3;margin-bottom:6px}.mc p{font-size:.82rem;color:var(--tx3);line-height:1.55;margin:0}
-.cc{background:var(--bg);border-radius:var(--r);padding:20px;border:1px solid var(--brd);box-shadow:var(--sh);position:relative}
+.mc h4{font-weight:700;font-size:.95rem;line-height:1.3;margin-bottom:6px;color:var(--tx)}.mc p{font-size:.82rem;color:var(--tx3);line-height:1.55;margin:0}
+
+/* ===== CASE CARDS ===== */
+.cc{background:var(--bg);border-radius:var(--r);padding:20px;border:1px solid var(--brd);box-shadow:var(--sh);position:relative;transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+.cc:hover{transform:translateY(-2px);box-shadow:var(--shL);border-color:var(--brd2)}
 .cc .rs{position:absolute;top:12px;right:16px;font-size:.65rem;font-weight:700;letter-spacing:.08em;padding:2px 8px;border-radius:3px}
 .ok{background:var(--sageL);color:var(--sage)}.ng{background:rgba(200,60,60,.08);color:#A04040}
-.cc h4{font-weight:700;font-size:.92rem;margin-bottom:2px}.cc .ind{font-size:.72rem;color:var(--wg2);margin-bottom:8px}.cc p{font-size:.82rem;color:var(--tx2);line-height:1.6;margin:0}
-.qc{background:linear-gradient(135deg,var(--cream2),var(--cream));border-radius:var(--r);padding:20px 24px;margin-bottom:12px;border:1px solid var(--brd);position:relative}
-.qc::before{content:'\201C';font-family:var(--fs);font-size:2.5rem;line-height:1;color:var(--accent);opacity:.25;position:absolute;top:8px;left:16px}
-.qc .qt{font-family:var(--fs);font-weight:600;font-size:.92rem;line-height:1.65;padding-left:24px}
+.cc h4{font-weight:700;font-size:.92rem;margin-bottom:2px;color:var(--tx)}.cc .ind{font-size:.72rem;color:var(--wg2);margin-bottom:8px}.cc p{font-size:.82rem;color:var(--tx2);line-height:1.6;margin:0}
+
+/* ===== QUOTE CARDS ===== */
+.qc{background:linear-gradient(135deg,var(--cream2),var(--cream));border-radius:var(--r);padding:20px 24px;margin-bottom:12px;border:1px solid var(--brd);position:relative;transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+.qc:hover{border-color:rgba(196,112,75,.15);box-shadow:0 2px 12px rgba(196,112,75,.06)}
+.qc::before{content:'C';font-family:var(--fs);font-size:2.5rem;line-height:1;color:var(--accent);opacity:.2;position:absolute;top:8px;left:16px}
+.qc .qt{font-family:var(--fs);font-weight:600;font-size:.92rem;line-height:1.65;padding-left:24px;color:var(--tx)}
 .qc .qs{font-size:.72rem;font-weight:600;color:var(--accent);margin-top:6px;padding-left:24px}
-.tw{overflow-x:auto;margin-top:14px}table{width:100%;border-collapse:collapse;font-size:.82rem}
+
+/* ===== TABLES ===== */
+.tw{overflow-x:auto;margin-top:14px;border-radius:var(--r);border:1px solid var(--brd)}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
 th{background:var(--cream2);color:var(--tx);font-weight:600;font-size:.74rem;letter-spacing:.04em;text-align:left;padding:10px 14px;border-bottom:1px solid var(--brd)}
 td{padding:10px 14px;border-bottom:1px solid var(--brd);vertical-align:top;color:var(--tx2);font-weight:450;line-height:1.55}
+tr:nth-child(even) td{background:rgba(0,0,0,.01)}
 tr:hover td{background:var(--accentL)}
-.nt{background:var(--accentL);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;font-size:.85rem;font-weight:500;line-height:1.6;color:var(--tx2);margin-top:20px}
+tr:last-child td{border-bottom:none}
+
+/* ===== NOTE BOXES ===== */
+.nt{background:var(--accentL);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;font-size:.85rem;font-weight:500;line-height:1.6;color:var(--tx2);margin-top:20px;transition:all .4s ease}
+.nt.revealed{animation:noteIn .6s ease forwards}
+@keyframes noteIn{0%{background:transparent;border-left-color:transparent}100%{background:var(--accentL);border-left-color:var(--accent)}}
+
+/* ===== RIPPLE DIAGRAM ===== */
 .rd{display:flex;align-items:center;justify-content:center;gap:8px;margin:20px 0;flex-wrap:wrap}
-.rl{border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.7rem;font-weight:600;color:#fff}
-.rl1{width:70px;height:70px;background:var(--accent)}.rl2{width:96px;height:96px;background:var(--accent2);opacity:.85}.rl3{width:124px;height:124px;background:var(--sage);opacity:.75}.rl4{width:154px;height:154px;background:var(--navy);opacity:.65}
+.rl{border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.7rem;font-weight:600;color:#fff;transition:all .3s ease}
+.rl:hover{transform:scale(1.06)}
+.rl1{width:70px;height:70px;background:linear-gradient(135deg,var(--accent),var(--accent2))}.rl2{width:96px;height:96px;background:linear-gradient(135deg,var(--accent2),var(--accent));opacity:.85}.rl3{width:124px;height:124px;background:linear-gradient(135deg,var(--sage),#8ab48e);opacity:.75}.rl4{width:154px;height:154px;background:linear-gradient(135deg,var(--navy),#5a7a9f);opacity:.65}
 .ra{font-size:1.2rem;color:var(--wg2)}
-.mx{background:var(--bg);border:1px solid var(--brd);border-radius:var(--r);padding:18px;min-height:120px;box-shadow:var(--sh)}
-.mx strong{display:block;font-weight:700;font-size:.85rem;line-height:1.25;margin-bottom:6px}.mx p{font-size:.8rem;color:var(--tx3);line-height:1.5;margin:0}
-.fc{text-align:center;padding:28px 20px;color:var(--tx3);font-size:.72rem;font-weight:500;letter-spacing:.04em}
-@media(max-width:768px){.hero{padding:36px 20px 32px}.hero h1{font-size:1.6rem}.cw{padding:24px 16px 40px}.c{padding:20px 18px}.nav-tab{padding:14px 16px;font-size:.78rem}.g2{grid-template-columns:1fr}.rd{flex-direction:column;gap:4px}.ra{transform:rotate(90deg)}}
+
+/* ===== MIX CARDS ===== */
+.mx{background:var(--bg);border:1px solid var(--brd);border-radius:var(--r);padding:18px;min-height:120px;box-shadow:var(--sh);transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+.mx:hover{transform:translateY(-2px);box-shadow:var(--shL);border-color:var(--brd2)}
+.mx strong{display:block;font-weight:700;font-size:.85rem;line-height:1.25;margin-bottom:6px;color:var(--tx)}.mx p{font-size:.8rem;color:var(--tx3);line-height:1.5;margin:0}
+
+/* ===== FOOTER ===== */
+.fc{text-align:center;padding:32px 20px;color:var(--tx3);font-size:.72rem;font-weight:500;letter-spacing:.06em;border-top:1px solid var(--brd)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){.hero{padding:40px 20px 36px}.hero h1{font-size:1.6rem}.cw{padding:24px 16px 40px}.c{padding:20px 18px}.nav-tab{padding:14px 16px;font-size:.78rem}.g2{grid-template-columns:1fr}.rd{flex-direction:column;gap:4px}.ra{transform:rotate(90deg)}}
 @media(max-width:480px){.g3,.g4{grid-template-columns:1fr}.hero h1{font-size:1.4rem}}
-::selection{background:var(--accentL);color:var(--accent)}
 </style>
 </head>
 <body>
+<div class="progress-bar" id="progressBar"></div>
 <header class="hero">
 <div class="hero-inner">
 <div class="eyebrow">Fudan MBA · BTS 2026 Spring · Session 1 Notes</div>
@@ -422,6 +504,90 @@ tr:hover td{background:var(--accentL)}
 <div class="nt">用户端最在意续航（不是安全——安全是政策端需求）。中创新航选择中镍高电压路线：牺牲部分成本优势，提升安全性，维持续航。从 5-8 名冲到第 3 名。</div>
 </div>
 
+<!-- S2 下午场：品牌调性 + CDBD + 四大元素 + 价值链 -->
+
+<div class="c ca">
+<h3>S2 下午核心：品牌调性七图谱</h3>
+<p>硬核科创也需要讲调性。功能价值解决「能不能用」的问题，情绪价值解决「信不信你、喜不喜欢你」的问题。买房、择偶、国家战略——重大决策往往由情绪驱动。品牌调性 = 你用什么样的人格对用户说话。它比产品属性更稳定，比竞品变化更持久。</p>
+<table>
+<tr><th>调性类型</th><th>中国案例</th><th>国际案例</th><th>核心特征</th></tr>
+<tr><td><strong>愿景型</strong></td><td>大疆「未来无所不能」</td><td>SpaceX「让人类成为多行星物种」</td><td>宏大叙事，描绘未来蓝图</td></tr>
+<tr><td><strong>激情型</strong></td><td>苹果早期（1984 广告，颠覆垄断）</td><td>早期苹果 vs 今天苹果（从激情→极简高级）</td><td>颠覆精神，吸引早期种子用户</td></tr>
+<tr><td><strong>灵活型</strong></td><td>华为（狼性文化：把不可能变可能）</td><td>Netflix（DVD→租碟→流媒体→自制内容，三次转型逃脱大劫）</td><td>毫不犹豫转身，快速适应市场</td></tr>
+<tr><td><strong>关爱型</strong></td><td>腾讯（早期马化腾假扮用户陪聊）</td><td>多邻国（搞怪猫头鹰 6 秒广告「Do your Duolingo, no buzz」）</td><td>温暖亲近，拉近距离</td></tr>
+<tr><td><strong>协作型</strong></td><td>阿里云（开放、协作、共生）</td><td>Slack（团队协作为主张）</td><td>开放生态，共建共赢</td></tr>
+<tr><td><strong>专业型</strong></td><td>—</td><td>英伟达（长期 GPU 叙事）</td><td>权威可信，深耕垂直</td></tr>
+<tr><td><strong>专长型</strong></td><td>科大讯飞（只做智能语音一件事）</td><td>Platonic（只服务美国政府军情数字化）</td><td>垂直深耕，不做其他</td></tr>
+</table>
+<div class="nt">调性不是互斥的——可以组合。苹果早期 = 激情，后期 = 专业+极简；SpaceX = 愿景+创新；小米 = 激情+协作。像调香水：有前中后调和主调斜调。</div>
+</div>
+
+<div class="c cs">
+<h3>调性选择三问</h3>
+<div class="g3">
+<div class="sc"><span class="st s1">问 1</span><strong>创始人真实气质是什么？</strong><span class="d">大直男硬演关爱，演不了一年。从真实性格出发，不伪装、不立人设。</span></div>
+<div class="sc"><span class="st s2">问 2</span><strong>产品解决问题的方式更适合哪种？</strong><span class="d">食品→关爱更自然；生物药→专业更贴合。品类决定调性方向。</span></div>
+<div class="sc"><span class="st s3">问 3</span><strong>目标用户需要什么情感价值？</strong><span class="d">不是问用户要什么功能，而是问用户希望品牌带来哪些情感：归属感？权威感？还是亲近感？</span></div>
+</div>
+<div class="nt">三个答案交织 = 你的主调。案例：人造棕榈油公司选择食品行业 → 选关爱调性 → 让女性创始人出面 → 用「自然灵感、实验室制造」替代「人造」措辞。</div>
+</div>
+
+<div class="c">
+<h3>CDBD 品牌资产三阶模型</h3>
+<p>基于 Kevin Lane Keller 经典 CBBE 模型，科创版简化为三层：从基础到深入，逐步建立品牌资产。</p>
+<table>
+<tr><th>阶段</th><th>核心任务</th><th>关键动作</th></tr>
+<tr><td><strong>品牌认同</strong></td><td>让用户知道你是谁，并同意你就是做这个的</td><td>以创始人为核心，让利益关联方（员工/投资人/合作方/客户）形成统一认知</td></tr>
+<tr><td><strong>品牌信任</strong></td><td>用户相信你说的是真的</td><td>品牌叙事：用故事承载信念，而非口号。黄仁勋 15 年 GPU 叙事 = 品牌认同典范</td></tr>
+<tr><td><strong>品牌忠诚</strong></td><td>我相信你了，我还认同你</td><td>占据用户心智四大元素：创始人故事 + 视觉标签 + 工作方式 + 内容营销</td></tr>
+</table>
+<div class="nt">黄仁勋案例：15 年前就讲「GPU 时代必将到来」，不讲英伟达自己如何，而是讲计算方式的范式转移——从文字数字到图像虚拟世界。叙事框架比产品本身更有说服力。</div>
+</div>
+
+<div class="c ca">
+<h3>故事三要素：为什么科创企业要讲故事？</h3>
+<p>牛顿力学 vs 牛顿苹果树——所有人都记不住万有引力公式，但都记得苹果砸头。人类进化决定我们擅长记故事，不擅长记数据。</p>
+<div class="g3">
+<div class="sc"><span class="st s1">要素 1</span><strong>善于被记忆</strong><span class="d">文字出现前，人类文明靠口口相传延续几千年。女娲补天的故事至今仍在。</span></div>
+<div class="sc"><span class="st s2">要素 2</span><strong>天然会传播</strong><span class="d">听到有意思的故事/八卦/瓜——你忍不住要跟别人讲。故事自带传播基因。</span></div>
+<div class="sc"><span class="st s3">要素 3</span><strong>信念感</strong><span class="d">给员工讲「今年做十个亿」没人热血沸腾。讲一个真实感人的故事，有人跟你拼命。</span></div>
+</div>
+<p style="margin-top:16px"><strong>牛顿苹果树案例链：</strong>牛顿庄园（原创）→ 剑桥三一学院（移植）→ MIT（美国第一棵）→ 耶鲁 → 加拿大 → 东京 → 中国（上海辰山植物园 / 天津大学 / 汕头大学）→ 乔布斯第一代 Apple Logo 画的就是牛顿坐在树下。一个故事跨越 400 年，成为品牌资产。</p>
+</div>
+
+<div class="c">
+<h3>科创品牌四大元素（占据用户心智）</h3>
+<p>科创企业没钱做大面积广告时，以下四个低成本品牌元素验证有效：</p>
+<div class="g2">
+<div class="mc"><span class="b">元素 1</span><h4>创始人故事</h4><p>最天然、最不要钱的品牌资产。选一个最抓人的故事，只讲一个——人无法共情一群人，只能共情一个人（汶川母亲塑像 vs 死亡数字的捐款实验）。案例：何江（哈佛首位华人毕业演讲者）被蜘蛛咬的故事 → Vizgen 空间多组学公司品牌 DNA → 「改变科技知识分布的不均」。</p></div>
+<div class="mc"><span class="b">元素 2</span><h4>视觉标签</h4><p>不是 LOGO——是让人们记住你最简洁的方式。统一主题色、字体、宣传文案、产品包装、供应链对外视觉。案例：戴尔 100+ 页 VI 规范；复旦管院蓝金色系（蓝 = 复旦主色，金 = 管院特色）。AI 时代成本已极低。</p></div>
+<div class="mc"><span class="b">元素 3</span><h4>工作方式（SOP）</h4><p>独属科创企业的品牌元素。客户每次接触你的员工 = 品牌展示机会。案例：Amazon「不用 PPT 汇报」（简洁高效）；华为工作法（给外面看的，不是员工手册）；远程协作公司必须自己先远程办公——工作方式要符合品牌理念。</p></div>
+<div class="mc"><span class="b">元素 4</span><h4>内容营销（圈红）</h4><p>不是网红，是圈红——在垂直领域做意见领袖。没有圈子就造圈。案例：安卓（开放生态造圈）；Basecamp（出书宣扬远程工作法，把认同者团结成圈）；海底捞你学不会 / 华为工作法 = 同一逻辑。</p></div>
+</div>
+</div>
+
+<div class="c cs">
+<h3>科创品牌价值链</h3>
+<p>基于波特价值链延伸：研发、生产、营销、服务每个环节都能转化为品牌资产。不只是营销部门的事。</p>
+<table>
+<tr><th>企业环节</th><th>品牌资产转化</th><th>案例</th></tr>
+<tr><td>研发</td><td>挖大神本身就是研发的品牌价值——但不去讲就白浪费</td><td>AI 行业抢人大战；小米挖萝卜粒后操盘 PR 传播</td></tr>
+<tr><td>生产/供应链</td><td>供应链上下游的合作关系 = 品牌背书</td><td>科创企业每年披露研发经费——但只说数字不够，要讲人和故事</td></tr>
+<tr><td>营销</td><td>降低进入市场成本，圈层传播代替大面积广告</td><td>出书、造圈、做意见领袖</td></tr>
+<tr><td>服务</td><td>SOP 流程本身就是品牌资产</td><td>统一的客户接触标准 → 品牌一致性</td></tr>
+</table>
+<div class="nt">品牌价值不只停留在最后「消费者认知」环节——前三个环节（投资者/供应链/营销成本）同样可以薅品牌羊毛。</div>
+</div>
+
+<div class="c" style="border-left:3px solid var(--navy)">
+<h3>S2 三句话总结</h3>
+<div class="g3">
+<div class="sc"><span class="st s1">总结 1</span><strong>科创企业做品牌要减法</strong><span class="d">5 个优势不如 1 个优势。少即是多。</span></div>
+<div class="sc"><span class="st s2">总结 2</span><strong>硬核科技也要讲调性</strong><span class="d">功能价值解决「能不能用」，情绪价值解决「信不信你」。调性比产品更稳定、更持久。</span></div>
+<div class="sc"><span class="st s3">总结 3</span><strong>品牌价值需要挖掘</strong><span class="d">每个环节（研发/生产/营销/服务）都有品牌资产可挖。不要只盯最后一个环节。</span></div>
+</div>
+</div>
+
 </section>
 
 <!-- TAB 3: MODELS -->
@@ -432,6 +598,10 @@ tr:hover td{background:var(--accentL)}
 <div class="g3">
 <div class="mc"><span class="b">总纲</span><h4>涟漪模型</h4><p>创始人 → 企业人格 → 产品品牌 → 用户认知。品牌建设永远是一把手工程。</p></div>
 <div class="mc"><span class="b">S2</span><h4>MVB 最小可行品牌</h4><p>目标用户 + 品类参照 + 核心差异 + 信任理由 + 品牌调性。用最少品牌元素完成关键沟通。</p></div>
+<div class="mc"><span class="b">S2 下午</span><h4>品牌调性七图谱</h4><p>愿景/激情/灵活/关爱/协作/专业/专长。调性可组合，像调香水。选择三问：创始人气质 + 产品方式 + 用户情感需求。</p></div>
+<div class="mc"><span class="b">S2 下午</span><h4>CDBD 品牌资产三阶</h4><p>认同（知道你是谁）→ 信任（相信你说的是真的）→ 忠诚（认同你）。基于 Keller 经典 CBBE 简化。</p></div>
+<div class="mc"><span class="b">S2 下午</span><h4>科创品牌四大元素</h4><p>占据用户心智：创始人故事 + 视觉标签 + 工作方式(SOP) + 内容营销(圈红)。低成本验证有效。</p></div>
+<div class="mc"><span class="b">S2 下午</span><h4>科创品牌价值链</h4><p>研发/生产/营销/服务每个环节都可转化为品牌资产。不只是营销部门的事。延伸自波特价值链。</p></div>
 <div class="mc"><span class="b">S1/S2</span><h4>价值诉求公式</h4><p>价值诉求 = 痛点 + 差异 + 信任 + 证据。把技术优势转译成用户可感知的购买理由。</p></div>
 <div class="mc"><span class="b">S3</span><h4>品牌架构四策略</h4><p>单一品牌、多品牌、母子品牌、背书品牌。选择依据：用户是否相同、技术是否相通、风险是否传导。</p></div>
 <div class="mc"><span class="b">S4</span><h4>社媒喇叭传播模型</h4><p>科创企业不适合照搬经典漏斗。关键是精准传播、双向沟通、圈层文化和以小搏大。</p></div>
@@ -485,6 +655,19 @@ tr:hover td{background:var(--accentL)}
 <div class="cc"><span class="rs ng">教训</span><h4>雅虎 Yahoo</h4><p class="ind">互联网</p><p>弱品类中强品牌→盲目延伸（搜索+邮件+门户+音乐+视频），核心被谷歌超越，其他也没赢。定位越来越模糊→用户认知丧失。品牌定位迁移的反面教材。</p></div>
 <div class="cc"><span class="rs ok">策略</span><h4>婴儿脱敏辅食</h4><p class="ind">美国科创/母婴</p><p>3岁前小量多次接触过敏原可降敏。不走母婴强品类，先走儿科医生院线（弱品类渠道）。借医生信任建立认知后再扩展到开价渠道。</p></div>
 </div>
+
+<div class="c">
+<h3>S2 下午案例深度</h3>
+<div class="g2">
+<div class="cc"><span class="rs ok">成功</span><h4>多邻国 Duolingo</h4><p class="ind">教育科技/语言学习</p><p>成人学英语时间窗口极短，谈不了用户粘性。走专业形象早死了——选关爱调性，搞怪猫头鹰出圈。6 秒广告「Do your Duolingo, no buzz」（别放屁了，赶紧学习）。成人用户需要的是「愿意开始」，不是「学得专业」。</p></div>
+<div class="cc"><span class="rs ok">成功</span><h4>Netflix</h4><p class="ind">流媒体</p><p>三次转型逃过三次大劫：卖碟→租碟→流媒体→自制内容。很早布局全球算法推荐大赛，毫不犹豫转身。品牌调性 = 灵活型。从 DVD 公司变成全球媒体巨头。</p></div>
+<div class="cc"><span class="rs ok">经典</span><h4>苹果调性演变</h4><p class="ind">消费电子</p><p>1984 年：激情颠覆型（砸烂老大哥、怼天怼地、两个愣头青）。2026 年：专业+极简+高级感（留白、revolutionary、性冷淡风）。创业期 DNA = 激情，用来吸引早期先锋用户。品牌调性随阶段演变。</p></div>
+<div class="cc"><span class="rs ok">经典</span><h4>牛顿苹果树</h4><p class="ind">品牌叙事/符号</p><p>牛顿庄园→剑桥→MIT→耶鲁→东京→中国（辰山/天大/汕大）→Apple 第一代 Logo。一个故事跨越 400 年，全球移植苹果树不是吸引游客，是传递信念。故事三要素：可记忆、可传播、信念感。</p></div>
+<div class="cc"><span class="rs ok">成功</span><h4>何江 / Vizgen</h4><p class="ind">生物医学/空间多组学</p><p>哈佛首位华人毕业演讲者。蜘蛛咬手→妈妈把手放油锅→「改变科技知识分布的不均」。故事成为 Vizgen 品牌 DNA。2024 退居 VP 让职业经理人运营 1→100，但品牌仍在用何江 IP。好的创始人故事值得持续挖掘。</p></div>
+<div class="cc"><span class="rs ok">策略</span><h4>华为工作法</h4><p class="ind">品牌元素/工作方式</p><p>不是员工手册——是给外面看的。总结真实工作方式，选出希望外界知道的部分。与海底捞你学不会同一逻辑：让你觉得你学不会，但建立了品牌认知。工作方式(SOP)本身成为品牌资产。</p></div>
+<div class="cc"><span class="rs ok">策略</span><h4>Basecamp 造圈</h4><p class="ind">SaaS/远程协作</p><p>出书宣扬远程工作法（《Remote》《REWORK》），把认同者团结成圈。在圈子里做意见领袖 → 相信远程工作 = 采购 Basecamp 服务。圈红不是网红——在垂直领域做 KOL。出书已成企业品牌杠杆。</p></div>
+<div class="cc"><span class="rs ok">经典</span><h4>人造棕榈油公司</h4><p class="ind">合成生物学</p><p>用酵母发酵替代天然棕榈油，技术本身有应用价值但进入食品行业有争议。品牌策略：选关爱调性→女性创始人出面（男性当背景板）→措辞从「人造」改为「自然灵感、实验室制造」。调性匹配品类的典型案例。</p></div>
+</div>
 </div>
 
 <div class="c ca">
@@ -512,6 +695,14 @@ tr:hover td{background:var(--accentL)}
 <div class="qc"><div class="qt">安全不是用户看的——是政策看的；用户只看续航</div><div class="qs">— S2 · 中创新航案例讨论，买车的人谁看电池？看的是续航</div></div>
 <div class="qc"><div class="qt">斩杀巨龙的少年终将成为巨龙——品牌定位不是一成不变的</div><div class="qs">— S2 · 雅虎从弱品类强品牌到盲目延伸失去定位的反面教材</div></div>
 <div class="qc"><div class="qt">品牌和产品绑定，没有产品改变不做品牌展示——讲多错多</div><div class="qs">— S2 · 科创品牌与快消品牌的本质区别</div></div>
+<div class="qc"><div class="qt">功能价值解决「能不能用」，情绪价值解决「信不信你」——调性比产品更稳定、更持久</div><div class="qs">— S2 下午 · 硬核科创也要讲调性</div></div>
+<div class="qc"><div class="qt">同样一段话，不是徐老师讲的，换个人讲一模一样的——你信吗？人格决定感知</div><div class="qs">— S2 下午 · 品牌调性 = 你用什么人格对用户说话</div></div>
+<div class="qc"><div class="qt">人无法共情一群人，只能共情一个人——所以创始人故事只讲一个</div><div class="qs">— S2 下午 · Identifiable Victim 效应。汶川母亲塑像 vs 死亡数字，前者捐款更多</div></div>
+<div class="qc"><div class="qt">所有人都记不住万有引力公式，但都记得苹果砸头——故事天生可记忆、可传播、有信念感</div><div class="qs">— S2 下午 · 牛顿苹果树案例，人类进化决定我们擅长记故事</div></div>
+<div class="qc"><div class="qt">品牌需要的是新的叙事框架，而不是新的产品</div><div class="qs">— S2 下午 · 黄仁勋 15 年讲 GPU 时代叙事，不讲英伟达自己</div></div>
+<div class="qc"><div class="qt">不是网红，是圈红——在垂直领域做意见领袖，没有圈子就造圈</div><div class="qs">— S2 下午 · 科创企业内容营销策略</div></div>
+<div class="qc"><div class="qt">华为工作法不是给员工看的——是给你看的。工作方式本身就是品牌资产</div><div class="qs">— S2 下午 · SOP = 品牌元素</div></div>
+<div class="qc"><div class="qt">研发挖大神本身就是品牌价值——但不去讲就白浪费</div><div class="qs">— S2 下午 · 品牌价值链：每个环节都可转化为品牌资产</div></div>
 </div>
 
 <div class="c">
@@ -531,10 +722,86 @@ tr:hover td{background:var(--accentL)}
 
 </main>
 
-<footer class="fc">FUDAN MBA BTS 2026 SPRING · 科创企业品牌建设 · S1 + S2 课堂录音整合版</footer>
+<footer class="fc">FUDAN MBA BTS 2026 SPRING · 科创企业品牌建设 · S1 + S2 全天课堂录音整合版</footer>
 
 <script>
-function showTab(id){document.querySelectorAll('.tp').forEach(function(e){e.classList.remove('active')});document.querySelectorAll('.nav-tab').forEach(function(e){e.classList.remove('active')});document.getElementById(id).classList.add('active');var btns=document.querySelectorAll('.nav-tab');for(var i=0;i<btns.length;i++){if(btns[i].getAttribute('onclick').indexOf(id)!==-1){btns[i].classList.add('active');break}}window.scrollTo({top:0,behavior:'smooth'})}
+/* ===== Tab Switching ===== */
+function showTab(id){
+  var tabs=document.querySelectorAll('.tp');
+  var btns=document.querySelectorAll('.nav-tab');
+  var target=document.getElementById(id);
+  if(!target)return;
+  /* Fade out current */
+  tabs.forEach(function(t){if(t.classList.contains('active')){t.style.opacity='0';t.style.transform='translateY(10px)';}});
+  setTimeout(function(){
+    tabs.forEach(function(t){t.classList.remove('active');t.style.opacity='';t.style.transform='';});
+    btns.forEach(function(b){b.classList.remove('active');});
+    target.classList.add('active');
+    /* Find matching button */
+    var names={overview:'课程总览',s1depth:'S1 深度笔记',s2depth:'S2 深度笔记',models:'模型工具箱',cases:'案例与金句'};
+    btns.forEach(function(b){if(b.textContent===names[id])b.classList.add('active');});
+    window.scrollTo({top:document.querySelector('.cw').offsetTop-60,behavior:'smooth'});
+    /* Re-observe cards in new tab */
+    setTimeout(function(){observeCards();},100);
+  },200);
+}
+
+/* ===== Scroll Reveal: Reading Focus ===== */
+function observeCards(){
+  var targets=document.querySelectorAll('.c,.sc,.mc,.cc,.qc,.mx,.nt');
+  var revealObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var el=entry.target;
+        /* Stagger delay based on sibling index */
+        var parent=el.parentElement;
+        var siblings=parent?Array.from(parent.querySelectorAll('.c,.sc,.mc,.cc,.qc,.mx,.nt')):[];
+        var idx=siblings.indexOf(el);
+        var delay=idx>0?Math.min(idx*60,300):0;
+        setTimeout(function(){el.classList.add('revealed');},delay);
+        revealObserver.unobserve(el);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  targets.forEach(function(el){
+    if(!el.classList.contains('revealed')){revealObserver.observe(el);}
+  });
+}
+
+/* ===== Reading Progress Bar ===== */
+function updateProgress(){
+  var bar=document.getElementById('progressBar');
+  if(!bar)return;
+  var scrollTop=window.pageYOffset||document.documentElement.scrollTop;
+  var docHeight=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  var pct=docHeight>0?Math.min((scrollTop/docHeight)*100,100):0;
+  bar.style.width=pct+'%';
+}
+
+/* ===== Nav Scroll Shadow ===== */
+function updateNavShadow(){
+  var nav=document.querySelector('.nav-bar');
+  if(!nav)return;
+  if(window.pageYOffset>10){nav.classList.add('scrolled');}
+  else{nav.classList.remove('scrolled');}
+}
+
+/* ===== Init ===== */
+document.addEventListener('DOMContentLoaded',function(){
+  observeCards();
+  /* Scroll listeners */
+  window.addEventListener('scroll',function(){updateProgress();updateNavShadow();},{passive:true});
+  updateProgress();
+  updateNavShadow();
+  /* Smooth scroll for internal links */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var t=document.querySelector(a.getAttribute('href'));
+      if(t)t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+});
 </script>
 </body>
 </html>
