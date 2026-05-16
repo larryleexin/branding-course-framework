@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科创企业品牌建设 · 课程框架</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700;6..96,800;6..96,900&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --emerald: #3CD896;
+    --emerald-2: #2DC684;
+    --emerald-3: #25B377;
+    --navy: #0F1A5C;
+    --navy-2: #1B2774;
+    --navy-3: #3A4593;
+    --paper: #F1E9D6;
+    --paper-2: #E8DFC9;
+    --ink: #0F1A5C;
+    --rule: rgba(15, 26, 92, 0.18);
+    --rule-strong: rgba(15, 26, 92, 0.85);
+    --display-font: 'Bodoni Moda', 'Noto Serif SC', serif;
+    --body-font: 'Manrope', 'Noto Sans SC', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #0a0a0a;
+    color: var(--navy);
+    font-family: var(--body-font);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--emerald);
+    color: var(--navy);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 8px;
+    background: var(--navy);
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+  .hero-eyebrow {
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy-3);
+  }
+  .hero h1 {
+    font-family: var(--display-font);
+    font-weight: 900;
+    font-size: clamp(2.2rem, 5.5vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+  .hero h1 .cn {
+    display: block;
+    font-family: 'Noto Serif SC', var(--display-font), serif;
+    font-weight: 900;
+    font-size: 0.52em;
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+  }
+  /* Double-rule ornament */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    width: 100%;
+    max-width: 700px;
+    margin: 12px 0 8px;
+  }
+  .ornament .rule {
+    flex: 1;
+    height: 16px;
+    position: relative;
+  }
+  .ornament .rule::before,
+  .ornament .rule::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 3px;
+    background: var(--navy);
+  }
+  .ornament .rule::before { top: 2px; }
+  .ornament .rule::after { bottom: 2px; }
+  .ornament .word {
+    font-family: var(--display-font);
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    padding: 0 4px;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy-2);
+    max-width: 680px;
+    line-height: 1.55;
+  }
+  .hero-meta {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--navy-3);
+    margin-top: 4px;
+  }
+
+  /* ===== NAV TABS ===== */
+  .nav-bar {
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .nav-tab {
+    background: transparent;
+    border: none;
+    color: rgba(241,233,214,.55);
+    font-family: var(--body-font);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    padding: 16px 28px;
+    cursor: pointer;
+    transition: all .2s ease;
+    position: relative;
+    white-space: nowrap;
+  }
+  .nav-tab:hover {
+    color: var(--paper);
+    background: rgba(60,216,150,.08);
+  }
+  .nav-tab.active {
+    color: var(--emerald);
+    background: rgba(60,216,150,.12);
+  }
+  .nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 12px; right: 12px;
+    height: 3px;
+    background: var(--emerald);
+    border-radius: 3px 3px 0 0;
+  }
+
+  /* ===== CONTENT AREA ===== */
+  .content-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 28px 60px;
+  }
+  .tab-panel { display: none; animation: fadeSlide .3s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--paper);
+    border-radius: 6px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    position: relative;
+    box-shadow: 0 2px 16px rgba(0,0,0,.06);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--navy);
+    border-radius: 6px 6px 0 0;
+  }
+  .card-accent::before {
+    background: var(--emerald);
+  }
+  .card h3 {
+    font-family: var(--display-font);
+    font-weight: 900;
+    font-size: 1.65rem;
+    line-height: 1.05;
+    letter-spacing: -0.005em;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .card h3 .num {
+    font-family: var(--display-font);
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--emerald-2);
+    margin-right: 8px;
+    vertical-align: baseline;
+  }
+  .card p {
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.72;
+    color: var(--navy-2);
+    margin-bottom: 14px;
+  }
+
+  /* ===== GRID ===== */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+  }
+
+  /* ===== STEP CARDS ===== */
+  .step-card {
+    background: var(--navy);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 24px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50px; height: 50px;
+    background: var(--emerald);
+    border-radius: 0 6px 0 50px;
+    opacity: .25;
+  }
+  .step-card .session-tag {
+    display: inline-block;
+    background: var(--emerald);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .step-card strong {
+    display: block;
+    font-family: var(--display-font);
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .step-card .desc {
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.55;
+    color: rgba(241,233,214,.82);
+  }
+
+  /* ===== MODEL CARDS ===== */
+  .model-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 26px 24px;
+    border-left: 5px solid var(--emerald);
+    position: relative;
+  }
+  .model-card .badge {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--emerald);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .model-card h4 {
+    font-family: var(--display-font);
+    font-weight: 800;
+    font-size: 1.15rem;
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .model-card p {
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--navy-2);
+    margin: 0;
+  }
+
+  /* ===== TABLE ===== */
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 16px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  th {
+    background: var(--navy);
+    color: var(--emerald);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-size: 0.76rem;
+    text-align: left;
+    padding: 12px 16px;
+    white-space: nowrap;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(15,26,92,.1);
+    vertical-align: top;
+    color: var(--navy-2);
+    font-weight: 500;
+    line-height: 1.55;
+  }
+  tr:hover td {
+    background: rgba(60,216,150,.06);
+  }
+
+  /* ===== QUOTES ===== */
+  .quote-card {
+    background: var(--navy);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-card::before {
+    content: '\201C';
+    font-family: var(--display-font);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--emerald);
+    opacity: .3;
+    position: absolute;
+    top: 4px; left: 14px;
+  }
+  .quote-card .text {
+    font-family: 'Noto Serif SC', var(--display-font), serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 28px;
+  }
+  .quote-card .source {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--emerald);
+    margin-top: 8px;
+    padding-left: 28px;
+  }
+
+  /* ===== MATRIX 2x2 ===== */
+  .matrix-cell {
+    background: #fff;
+    border: 2px solid var(--rule);
+    border-radius: 6px;
+    padding: 20px;
+    min-height: 140px;
+  }
+  .matrix-cell strong {
+    display: block;
+    font-family: var(--display-font);
+    font-weight: 800;
+    font-size: 0.92rem;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .matrix-cell p {
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--navy-2);
+    margin: 0;
+  }
+
+  /* ===== NOTE CALLOUT ===== */
+  .note {
+    background: var(--emerald);
+    color: var(--navy);
+    border-radius: 6px;
+    padding: 22px 26px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-top: 20px;
+    position: relative;
+  }
+  .note::before {
+    content: '📌';
+    font-size: 1.2rem;
+    margin-right: 8px;
+  }
+
+  /* ===== FOOTER ACTIONS ===== */
+  .actions-bar {
+    background: var(--navy);
+    padding: 28px;
+    margin-top: 40px;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .actions-bar .action-btn {
+    background: var(--emerald);
+    color: var(--navy);
+    border: none;
+    font-family: var(--body-font);
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    padding: 12px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .actions-bar .action-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(60,216,150,.3);
+  }
+  .actions-bar .action-btn:active {
+    transform: translateY(0);
+  }
+
+  /* ===== FOOTER CREDIT ===== */
+  .footer-credit {
+    text-align: center;
+    padding: 32px 20px;
+    color: rgba(241,233,214,.35);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero { padding: 32px 20px 28px; }
+    .hero h1 { font-size: 2rem; }
+    .hero h1 .cn { font-size: 0.6em; }
+    .ornament { gap: 14px; }
+    .ornament .word { font-size: 1rem; }
+    .content-wrap { padding: 24px 16px 40px; }
+    .card { padding: 22px 20px; }
+    .nav-tab { padding: 14px 18px; font-size: 0.78rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .grid-4 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.7rem; }
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--paper-2); }
+  ::-webkit-scrollbar-thumb { background: var(--navy-3); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--navy); }
+
+  /* ===== SELECTION ===== */
+  ::selection { background: var(--emerald); color: var(--navy); }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">FUDAN MBA · BTS 2026 SPRING</div>
+    <h1>
+      Branding for Technology Startups
+      <span class="cn">科创企业品牌建设</span>
+    </h1>
+    <div class="ornament">
+      <div class="rule"></div>
+      <span class="word">COURSE FRAMEWORK</span>
+      <div class="rule"></div>
+    </div>
+    <p class="hero-sub">课件框架预整理：从"技术信任"到"品牌传播与管理"</p>
+    <p class="hero-meta">2026-05-16 · 徐倩 Qian Xu · 基于 BTS 2026 Spring、S1–S4 课件整理；课堂录音待补充</p>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav class="nav-bar" aria-label="框架导航">
+  <div class="nav-inner">
+    <button class="nav-tab active" onclick="showTab('overview')">课程总框架</button>
+    <button class="nav-tab" onclick="showTab('sessions')">四讲主线</button>
+    <button class="nav-tab" onclick="showTab('models')">模型工具箱</button>
+    <button class="nav-tab" onclick="showTab('cases')">案例与问题</button>
+  </div>
+</nav>
+
+<!-- ===== TAB 1: OVERVIEW ===== -->
+<main class="content-wrap">
+<section id="overview" class="tab-panel active">
+
+  <div class="card">
+    <h3><span class="num">I.</span> 这门课的核心问题</h3>
+    <p>这门课不是传统意义上的"品牌美化"或"广告传播"课程，而是围绕科创企业如何用品牌解决增长中的信任、定位、架构和传播问题。课件将科创企业定义为"以独特技术优势占领客户心智的初创企业"，因此品牌建设的核心不是做 Logo，而是让市场相信技术、理解价值、愿意选择，并在企业增长后仍能保持清晰认知。</p>
+    <div class="grid-4">
+      <div class="step-card">
+        <span class="session-tag">S1</span>
+        <strong>技术为什么可信？</strong>
+        <span class="desc">科创品牌的特性与挑战，回答用户为什么要相信你的技术。</span>
+      </div>
+      <div class="step-card">
+        <span class="session-tag">S2</span>
+        <strong>你占据什么位置？</strong>
+        <span class="desc">企业级品牌化战略，回答目标用户、品类参照、核心差异与品牌调性。</span>
+      </div>
+      <div class="step-card">
+        <span class="session-tag">S3</span>
+        <strong>增长后是否混乱？</strong>
+        <span class="desc">品牌架构设计，回答产品线扩张、品牌组合和增长秩序问题。</span>
+      </div>
+      <div class="step-card">
+        <span class="session-tag">S4</span>
+        <strong>市场如何接受你？</strong>
+        <span class="desc">品牌传播与管理，回答如何知道你、讨论你、原谅你、接受你。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <h3><span class="num">II.</span> 课程总逻辑：科创品牌建设涟漪模型</h3>
+    <p>课件多次出现"科创企业品牌建设涟漪模型"：创始人的核心理念，转化为企业文化，通过产品表达，最终形成用户心智中的品牌形象。这个模型适合做整门课的总纲，因为它把创始人、技术、组织、产品、传播与用户认知串在一起。</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>层次</th><th>关键问题</th><th>对应课程内容</th><th>学习重点</th></tr>
+        <tr><td><strong>创始人 / 理念</strong></td><td>为什么做这件事？凭什么相信你？</td><td>S1 创始人效应、S2 创始人故事、S4 创始人解释</td><td>品牌不是营销部门制造的，而是从创始人气质、产品逻辑和目标客群中生长出来。</td></tr>
+        <tr><td><strong>技术 / 产品</strong></td><td>技术优势如何变成用户能理解的价值？</td><td>S1 技术信任、KANO、真需求；S2 MVB、价值诉求公式</td><td>技术本身不是购买理由，必须转译成痛点、差异、信任和证据。</td></tr>
+        <tr><td><strong>增长 / 架构</strong></td><td>单一爆品成功后，如何避免认知混乱？</td><td>S3 品牌架构、品牌-产品矩阵、产品组合</td><td>品牌架构是增长秩序工具，不是内部命名游戏。</td></tr>
+        <tr><td><strong>传播 / 信任修复</strong></td><td>市场如何知道、传播、讨论并重新信任？</td><td>S4 社媒喇叭模型、传播内容、危机四步、出海信任路径</td><td>科创传播要低成本、高效率、可追踪，并能在危机中重建信任。</td></tr>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== TAB 2: SESSIONS ===== -->
+<section id="sessions" class="tab-panel">
+
+  <div class="card">
+    <h3>四讲主线：从技术可信到市场接受</h3>
+    <p>课件安排是一个递进链条：先解释科创企业为什么需要品牌，再讨论品牌如何被最小化设计，随后进入增长后的品牌架构，最后处理传播、危机和国际化。后续课堂录音可以按这个主线补充讲师解释和课堂讨论。</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>讲次</th><th>主题</th><th>核心框架</th><th>代表案例</th><th>预习问题</th></tr>
+        <tr><td><strong>S1</strong></td><td>科创品牌的特性与挑战</td><td>品牌重要性、科创品牌挑战、VIPFACE、涟漪模型、KANO / Better-Worse、安索夫矩阵 × 品牌</td><td>DeepSeek、特斯拉、Rivian、英集芯、Phonebloks、寒武纪、雷军/马斯克</td><td>用户为什么要相信你的技术？创始人 IP 是品牌资产还是品牌负债？</td></tr>
+        <tr><td><strong>S2</strong></td><td>企业级品牌化战略</td><td>MVB = 目标用户 + 品类参照 + 核心差异 + 信任理由 + 品牌调性；POP/POD；价值诉求公式；CBBE</td><td>Calendly、Green Monday、Zipline、GoPro、SpaceX、ARM、C16 Biosciences、NVIDIA</td><td>定位到底是口号，还是选择品类战场？技术能力如何翻译成价值诉求？</td></tr>
+        <tr><td><strong>S3</strong></td><td>品牌架构设计</td><td>四种品牌架构：单一品牌、多品牌、母子品牌、背书品牌；三个判断问题；品牌-产品矩阵</td><td>Pokémon Go、小米汽车、蔚来手机、OpenAI、Gemini、Claude、鸿蒙智行、字节、华为/荣耀、Uber/滴滴</td><td>爆品是否足以支撑长期增长？产品线扩张时，品牌应该统一还是分散？</td></tr>
+        <tr><td><strong>S4</strong></td><td>品牌传播与管理</td><td>经典漏斗 vs 社媒喇叭模型；可传播内容；ABT / 黑格尔三段论；危机应对四步；出海四路径</td><td>Insta360、BionX、OPPO、SU7、Zoom、传音、DJI、SHEIN、小米</td><td>科创企业预算少、受众窄、教育成本高，如何低成本传播？危机中先讲技术还是先讲人？</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="note">后续整合录音建议：录音上传后，重点补充三类内容：1）讲师对关键模型的口头解释；2）课堂讨论中对案例的判断标准；3）期末作业"个人 IP 品牌故事"相关提示。</div>
+
+</section>
+
+<!-- ===== TAB 3: MODELS ===== -->
+<section id="models" class="tab-panel">
+
+  <div class="card">
+    <h3>核心模型工具箱</h3>
+    <p>下面是先从课件中抽出的高频模型。后续做完整课堂笔记时，可把这些模型作为 Tab 1"核心框架"的骨架，再把录音里的解释补进每个模型的"怎么用"和"适用边界"。</p>
+    <div class="grid-3">
+      <div class="model-card">
+        <span class="badge">总纲</span>
+        <h4>科创品牌建设涟漪模型</h4>
+        <p>创始人理念 → 企业文化 → 产品表达 → 用户心智。适合解释为什么科创品牌是一把手工程，以及创始人 IP 为什么会直接影响品牌信任。</p>
+      </div>
+      <div class="model-card">
+        <span class="badge">S2</span>
+        <h4>MVB 最小可行品牌</h4>
+        <p>公式：目标用户 + 品类参照 + 核心差异 + 信任理由 + 品牌调性。适合资源有限的早期科创企业，目标是用最少品牌元素完成关键沟通。</p>
+      </div>
+      <div class="model-card">
+        <span class="badge">S1/S2</span>
+        <h4>价值诉求公式</h4>
+        <p>价值诉求 = 痛点 + 差异 + 信任 + 证据。它把技术优势转译成用户可感知、可比较、可相信的购买理由。</p>
+      </div>
+      <div class="model-card">
+        <span class="badge">S3</span>
+        <h4>品牌架构四策略</h4>
+        <p>单一品牌、多品牌、母子品牌、背书品牌。选择依据不是内部命名偏好，而是用户是否相同、技术是否相通、风险是否传导。</p>
+      </div>
+      <div class="model-card">
+        <span class="badge">S4</span>
+        <h4>社媒喇叭传播模型</h4>
+        <p>科创企业不适合简单照搬经典漏斗。更关键的是精准传播、双向沟通、圈层文化和以小搏大。</p>
+      </div>
+      <div class="model-card">
+        <span class="badge">S4</span>
+        <h4>危机应对四步</h4>
+        <p>先确认事实边界 → 先表达人的关怀 → 再给技术证据 → 最后给改进行动。适合技术型危机、安全事件和信任修复场景。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <h3>品牌架构判断矩阵</h3>
+    <div class="grid-2">
+      <div class="matrix-cell">
+        <strong>用户相同 + 技术相通 + 风险可承受</strong>
+        <p>倾向单一品牌或母子品牌。优点是认知成本低、营销效率高；风险是单点失败影响全局。例：小米、Apple、OpenAI。</p>
+      </div>
+      <div class="matrix-cell">
+        <strong>用户不同 + 技术不同 + 风险高</strong>
+        <p>倾向多品牌或独立子品牌。优点是风险隔离和细分市场适配；缺点是资源分散、品牌资产难复用。例：Alphabet、字节早期多产品。</p>
+      </div>
+      <div class="matrix-cell">
+        <strong>用户部分重叠 + 技术可复用</strong>
+        <p>倾向母子品牌。母品牌提供信任，子品牌负责场景区分。例：Amazon Kindle、OpenAI Sora。</p>
+      </div>
+      <div class="matrix-cell">
+        <strong>合作伙伴多 + 需要信任背书</strong>
+        <p>倾向背书品牌。母品牌给信任，合作方负责具体产品与运营。例：鸿蒙智行"五界"。</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== TAB 4: CASES ===== -->
+<section id="cases" class="tab-panel">
+
+  <div class="card">
+    <h3>案例地图</h3>
+    <p>课件覆盖近 30 个企业案例。先把它们按学习用途分组，后续听录音时可以补充讲师对每个案例的结论和课堂讨论观点。</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>学习主题</th><th>案例</th><th>要观察的问题</th></tr>
+        <tr><td><strong>技术信任与心智占领</strong></td><td>DeepSeek、特斯拉、寒武纪、英集芯、Rivian、Phonebloks</td><td>技术优势如何变成品牌叙事？真需求、技术可行、生态闭合是否同时成立？</td></tr>
+        <tr><td><strong>目标用户与品类定位</strong></td><td>Calendly、Green Monday、Zipline、GoPro、SpaceX、ARM、C16 Biosciences</td><td>从用户找技术，还是拿技术找用户？品类应该窄还是宽？属性和利益何时切换？</td></tr>
+        <tr><td><strong>品牌资产与调性</strong></td><td>NVIDIA、Apple、SpaceX、小米、科大讯飞、阿里云、Palantir</td><td>品牌调性是愿景、创新、激情、灵活、关爱、协作还是专业？主音是否清晰？</td></tr>
+        <tr><td><strong>品牌架构与增长秩序</strong></td><td>Pokémon Go、小米汽车、蔚来手机、OpenAI、Claude、Gemini、字节、华为/荣耀、Uber/滴滴</td><td>爆品是否会把认知锁死？多产品线该统一品牌、分品牌还是背书？</td></tr>
+        <tr><td><strong>传播、危机与国际化</strong></td><td>Insta360、BionX、OPPO、SU7、Zoom、传音、DJI、SHEIN、小米生态</td><td>如何低成本传播？危机中如何平衡技术透明与情绪安抚？出海如何重新获得信任？</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <h3>可直接引用的课件金句</h3>
+    <div class="quote-card">
+      <div class="text">"成功，是失败者创造的概念。因此，这门课上不会只讲成功案例，失败案例或许更有价值。"</div>
+      <div class="source">— S1 课件</div>
+    </div>
+    <div class="quote-card">
+      <div class="text">"做品牌不仅仅是设计 Logo 或拍广告。"</div>
+      <div class="source">— S2 课件</div>
+    </div>
+    <div class="quote-card">
+      <div class="text">"科创企业的品牌架构不是命名问题，而是增长秩序问题。"</div>
+      <div class="source">— S3 课件</div>
+    </div>
+    <div class="quote-card">
+      <div class="text">"出海不是把品牌带出去，而是在当地重新获得信任。"</div>
+      <div class="source">— S4 课件</div>
+    </div>
+    <div class="quote-card">
+      <div class="text">"科创是荷枪实弹，九死一生；品牌不是点缀，是护心镜。"</div>
+      <div class="source">— S4 课件</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>后续听课重点问题</h3>
+    <p>建议你后续上传课堂录音后，重点让我从录音里抓这几类信息：讲师对"为什么"的解释、对案例成败的判断标准、课堂同学提问、期末作业提醒，以及课件上没有写出来但考试/作业可能会用到的评价维度。</p>
+  </div>
+
+</section>
+
+<!-- ===== ACTIONS ===== -->
+<div class="actions-bar">
+  <button class="action-btn" onclick="sendPrompt('请基于这门课框架，帮我整理 S1 的详细课堂笔记')">整理 S1</button>
+  <button class="action-btn" onclick="sendPrompt('请把这些模型转成期末作业可用的分析模板')">生成作业模板</button>
+  <button class="action-btn" onclick="sendPrompt('请给我出一套科创企业品牌建设的模拟题')">生成模拟题</button>
+  <button class="action-btn" onclick="sendPrompt('我上传课堂录音后，请整合进这份 HTML 框架')">整合录音</button>
+</div>
+
+</main>
+
+<footer class="footer-credit">
+  FUDAN MBA BTS 2026 SPRING · 科创企业品牌建设 · EMERALD EDITORIAL TEMPLATE
+</footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const btn = Array.from(document.querySelectorAll('.nav-tab')).find(b => b.getAttribute('onclick').includes(id));
+    if (btn) btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function sendPrompt(text) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => alert('已复制问题：' + text));
+    } else {
+      prompt('复制这个问题继续追问：', text);
+    }
+  }
+</script>
+</body>
+</html>
